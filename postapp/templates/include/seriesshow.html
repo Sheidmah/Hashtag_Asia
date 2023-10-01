@@ -1,0 +1,16 @@
+   <div class="info  row-flex-box"> <span class=" row-flex-box"><i class="fa-solid fa-clapperboard"></i>
+      فیلم و سریال ها</span>
+    <a href="{% url 'homepage' %}">مشاهده همه ی سریال ها</a></div>
+
+        <ul class="flex-box row-flex-box">
+        {% for post in last_post %}
+        <li>
+        <a href="{{ post.get_absolute_url }}" title="{{ post.name }}">
+        <img width="176" height="238" src="{{ post.img.url }}" class="attachment-spt size-spt wp-post-image" alt="{{ post.name }}" loading="lazy" title="{{ post.name }}Eve 2022"><span>{{ post.name }}</span>
+        </a>
+        </li>
+                {% endfor %}
+
+
+        </ul>
+    </div>

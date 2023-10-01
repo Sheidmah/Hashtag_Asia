@@ -1,0 +1,26 @@
+  <ul>
+{% for last in last_post %}
+
+<li><a href="{{ last.get_absolute_url }}" class="row-flex-box"><div class="info">
+    <h4>{{ last.title }}</h4>
+    <div class="row-flex-box">
+{#        <span class="view"><i class="fa-solid fa-eye"></i>۶۳۴ بار</span>#}
+          {% for category in last.category.all %}
+        <span>
+        <i class="fa-solid fa-download"></i>
+
+{{ category.name }}&ensp;
+
+
+
+
+
+          </span>
+                       {% endfor %}
+    </div></div>
+    <img width="60" height="80" src="{{ last.img.url }}"  class="topdrama" alt="{{ last.title }}"loading="lazy">
+</a></li>
+
+
+{% endfor %}
+  </ul>

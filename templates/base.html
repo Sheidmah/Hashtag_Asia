@@ -1,0 +1,107 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="description" content="مرجع دانلود فیلم و سریال کره ای بالینک مستقیم و زیرنویس فارسی">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="">
+    <link rel="next" href="/page/2/">
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="هشتگ آسیا - دانلود فیلم و سریال کره ای">
+    <meta property="og:description" content="مرجع دانلود فیلم و سریال کره ای بالینک مستقیم و زیرنویس فارسی">
+    <meta property="og:url" content="#">
+    <meta property="og:site_name" content="هشتگ آسیا - دانلود فیلم و سریال کره ای">
+  {% block link %}
+    {% endblock %}
+
+    <title>{% block title %}{% endblock %}</title>
+<body class="column-flex-box">
+
+  <header class="hahdr column-flex-box"><nav class="mainhdr">
+    <div class="sitehdr row-flex-box max-width-page">
+      <div class="title column-flex-box"><h3><a href="{% url 'homepage' %}"></a><i class="fa-solid fa-hashtag"></i><strong>آسیا</strong> <i>دانلود رایگان فیلم وسریال کره ای </i></h3><p> هشتگ آسیا - دانلود فیلم و سریال کره ای  ,...</p></div>
+
+      <div class="search-filed">
+          {% block search-filed %}
+          {% endblock %}
+
+    </div>
+    </div>
+    </nav>
+    <nav class="menu">
+
+      <div class="profile-menu row-flex-box max-width-page">
+
+     <li><a class="profile-menu-link block" href="{% url 'homepage' %}"><i class="fa-solid fa-house"></i>صفحه ی اصلی</a></li>
+     <li><a class="profile-menu-link block" href="{% url 'homepage' %}"><i class="fa-solid fa-film"></i>دانلود سریال</a></li>
+     <li><a class="profile-menu-link none" href="{% url 'homepage' %}"><i class="fa-solid fa-video"></i>دانلود فیلم</a></li>
+     <li><a class="profile-menu-link block" href="{% url 'homepage' %}"><i class="fa-brands fa-instagram"></i>اینستاگرام</a></li>
+     <li><a class="profile-menu-link none" href="{% url 'homepage' %}"><i class="fa-solid fa-download"></i>آموزش دانلود</a></li>
+
+
+
+  </div>
+
+  </nav></header>
+
+  <div class="special max-width-page"><div class="series-show">
+      {% block seriesshow %}
+      {% endblock %}
+
+      {% block adv %}{% endblock %}
+  </div>
+  <div class="wrapper row-flex-box max-width-page">
+    <div class="pagebody column-flex-box">
+    {% block posts %}
+        {% endblock %}
+    </div>
+    <aside class="aside-left column-flex-box">
+        <div class="genere">
+{% block genre %}{% endblock %}
+      </div>
+
+    <div class="post-popular">
+  <div class="title"><h4><i class="fa-solid fa-heart"></i>فیلم و سریال های محبوب</h4></div>
+ {% block postpopular %}
+    {% endblock %}
+  </div>
+
+      </aside>
+    <aside class="aside-right column-flex-box">
+        {% block box %}
+        {% endblock %}
+
+
+
+            {% block randommovie %}
+    {% endblock %}
+
+            {% block randomseries %}
+    {% endblock %}
+
+
+
+
+  </aside>
+  </div>
+  <footer class="footer">
+
+
+    <div> <p><i class="fa-solid fa-copyright"></i>
+        تمامی حقوق مطالب برای هشتگ آسیا محفوظ است و هرگونه کپی برداری بدون ذکر منبع ممنوع می باشد.
+
+
+
+    </p></div>
+
+
+
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+    {% block link %}
+    <script type="application/ld+json" class="yoast-schema-graph"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "postapp/css/reset.css" %}">
+    <link rel="stylesheet" href="{% static "postapp/css/all.css" %}">
+    <link rel="stylesheet" href="{% static "postapp/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "postapp/style.css" %}">
+    <link rel="stylesheet" href="{% static "postapp/responsive.css" %}"/>
+    <link rel="stylesheet" href="{% static "postapp/css/iconmonstr-iconic-font.min.css" %}">
+    <script src="{% static "postapp/js/all.js" %}"></script>
+    {% endblock %}
+
+    {% block title %}هشتگ آسیا - دانلود فیلم و سریال کره ای{% endblock %}
+     {% block search-filed %}
+             <form class="search-bar" method="POST" action="{% url 'homepage' %}">
+             {% csrf_token %}
+
+                 <input type="text" placeholder="جستوجوی سریال ..." name="q">
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button></form>
+          {% endblock %}
+
+
+{% block seriesshow %}
+   {% include "include/seriesshow.html" %}
+      {% endblock %}
+   {% block adv %}
+{% endblock %}
+  {% block posts %}
+
+ {% for pin in pins %}
+   {% include "include/pins.html" %}
+
+      {% endfor %}
+
+  {% for post in posts %}
+   {% include "include/posts.html" %}
+
+      {% endfor %}
+      <div class="row-flex-box button-page">
+
+      <ul class="row-flex-box page-count">
+       {% if posts.has_previous %}
+      <a class="prev-btn" href="?page={{posts.previous_page_number}}">Prev</a>
+    {% endif %}
+      {% for pg in posts.paginator.page_range %}
+          {% if posts.number == pg %}
+           <a href="?page={{pg}}" class="btn-page {% if posts.number == pg  %}active{% endif %}" >{{pg}}</a>
+           {% else %}
+               <a href="?page={{pg}}" class="btn-page">{{pg}}</a>
+        {% endif %}
+      {% endfor %}
+       {% if posts.has_next %}
+      <a class="next-btn" href="?page={{posts.next_page_number}}">Next</a>
+    {% endif %}
+      </ul>
+
+      </div>
+
+
+
+ {% endblock %}
+
+
+
+{% block genre %}
+    <div class="gnrtitle row-flex-box">
+  <div class="gnricon"><i class="fa-solid fa-chalkboard-user"></i><span>ژانر ها</span></div>
+  <div class="gnr-options row-flex-box">
+    <a href="javascript: void(0);" class="btn-movies gnr-active" data-genre-type="genre-movies" role="button">فیلم</a>
+    <a href="javascript: void(0);" class="btn-series" data-genre-type="genre-series" role="button">سریال</a></div>
+
+</div>
+<ul class="gnr-content row-flex-box" id="genre-movies">
+  <li><a href="#" class="row-flex-box">اکشن<span class="count">4</span></a></li>
+  <li><a href="#" class="row-flex-box">تاریخی<span class="count">2</span></a></li>
+  <li><a href="#" class="row-flex-box">ترسناک<span class="count">9</span></a></li>
+  <li><a href="#" class="row-flex-box">خانوادگی<span class="count">5</span></a></li>
+  <li><a href="#" class="row-flex-box">درام<span class="count">1</span></a></li>
+  <li><a href="#" class="row-flex-box">عاشقانه<span class="count">7</span></a></li>
+  <li><a href="#" class="row-flex-box">فانتزی<span class="count">1</span></a></li>
+  <li><a href="#" class="row-flex-box">کمدی<span class="count">14</span></a></li>
+  <li><a href="#" class="row-flex-box">معمایی<span class="count">6</span></a></li>
+  <li><a href="#" class="row-flex-box">موزیکال<span class="count">8</span></a></li>
+  <li><a href="#" class="row-flex-box">هیجان انگیز<span class="count">4</span></a></li>
+</ul>
+<ul class="gnr-content" id="genre-movies" id="genre-series" style="display: none;">
+  <li><a href="#" class="row-flex-box">اکشن<span class="count">4</span></a></li>
+    <li><a href="#" class="row-flex-box">تاریخی<span class="count">2</span></a></li>
+    <li><a href="#" class="row-flex-box">ترسناک<span class="count">9</span></a></li>
+    <li><a href="#" class="row-flex-box">خانوادگی<span class="count">5</span></a></li>
+    <li><a href="#" class="row-flex-box">درام<span class="count">1</span></a></li>
+    <li><a href="#" class="row-flex-box">عاشقانه<span class="count">7</span></a></li>
+    <li><a href="#" class="row-flex-box">فانتزی<span class="count">1</span></a></li>
+    <li><a href="#" class="row-flex-box">کمدی<span class="count">14</span></a></li>
+    <li><a href="#" class="row-flex-box">معمایی<span class="count">6</span></a></li>
+    <li><a href="#" class="row-flex-box">موزیکال<span class="count">8</span></a></li>
+    <li><a href="#" class="row-flex-box">هیجان انگیز<span class="count">4</span></a></li>
+</ul>
+
+          {% endblock %}
+
+
+  {% block postpopular %}
+      {% include "include/popular.html" %}
+    {% endblock %}
+
+{% block box %}
+    {% include "include/box.html" %}
+
+        {% endblock %}
+
+
+       {% block randommovie %}
+                 <section class="rndm-post"><header class="title row-flex-box"><h4>دانلود فیلم و سریال</h4></header>
+      <div class="rndm-post-tp row-flex-box">
+                {% include "include/randommovies.html" %}
+                  </div></section>
+    {% endblock %}
+
+
+
+{#      {% block randomseries %}#}
+{#                 <section class="rndm-post"><header class="title row-flex-box"><h4>سریال های کره ای</h4></header>#}
+{#      <div class="rndm-post-tp row-flex-box">#}
+{#                {% include "include/randomseries.html" %}#}
+{#                  </div></section>#}
+{#    {% endblock %}#}
+
+
+
+

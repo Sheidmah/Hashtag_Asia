@@ -1,0 +1,59 @@
+
+<article class="post">
+         <div class="row row-flex-box">
+             <div class="title">
+                 <h2><a href="#">{{ post.title }}</a></h2>
+                 <div class="category row-flex-box">
+
+                      {% for category in post.category.all %}
+
+                     <a href="#"><span>{{ category.name }}&ensp;
+      {% if not forloop.last %}
+          |
+      {% endif %}</span>
+                 </a>
+                          {% endfor %}
+
+             </div></div>
+
+
+
+        <div class="post-detail row-flex-box">
+          <ul class="post_meta">
+            <li class="row-flex-box"><strong>نام:</strong><span> {{ post.name}} </span></li>
+            <li class="row-flex-box"><strong>ژانر:</strong><span>
+  {% for category in post.category.all %}
+             {{ category.name }}
+      {% if not forloop.last %}
+          |
+      {% endif %}
+
+ {% endfor %}</span></li>
+            <li class="row-flex-box"><strong>محصول:</strong><span>  {{ post.product }} </span></li>
+            <li class="row-flex-box"><strong>زبان فیلم:</strong><span> {{ post.language }} </span></li>
+            <li class="row-flex-box"><strong>سال ساخت:</strong><span>  {{ post.year }} </span></li>
+            <li class="row-flex-box"><strong> روزهای پخش:</strong><span> {% for day in post.day.all %}
+             {{ day.day }}
+      {% if not forloop.last %}
+          ,
+      {% endif %}
+
+ {% endfor %}</span></li>
+            <li class="row-flex-box"><strong>وضعیت:</strong><span>  {{ post.state }} </span></li>
+            <li class="row-flex-box"><strong> تعداد قسمت ها:</strong><span>  {{ post.episode }} </span></li>
+
+          </ul>
+<div class="post-img"><img src={{ post.img.url }} alt=""></div>
+        </div>
+        <div class="story-box">
+          <p><strong>خلاصه داستان : </strong> {{ post.story }}</p>
+          </div>
+        <div class="about-box">
+          <a href="{{ post.get_absolute_url }}" type="button" class="post_download">
+            <i class="bi bi-cloud-arrow-down"></i>دانلود </a>
+        </div>
+           <footer class="footer-post"><div class="view-count"><span><i class="fa-solid fa-eye"></i>بازدید</span>&nbsp;<span>{{ post.visited }}</span></div></footer>
+             </div>
+
+     </article>
+

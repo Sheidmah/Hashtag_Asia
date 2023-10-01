@@ -1,0 +1,131 @@
+{% load static %}
+
+
+{{ mydata|json_script:"mydata" }}
+{#{% if new_comment %}#}
+{#        <div class="alert alert-success" role="alert">#}
+{#        <spanp style="font-size:0.7rem;">#}
+{#            نظر شما برای نویسنده ارسال شد.#}
+{#        </spanp>#}
+{##}
+{#        </div>#}
+{##}
+{#{% endif %}#}
+
+
+
+<form class="column-flex-box" method="POST">
+{{ comment_form.body }}
+
+<div class="row-flex-box all-inp">
+     <div class="inp-cm column-flex-box">
+{{ comment_form.name }}
+         {{ comment_form.email }}
+
+</div>
+      {% csrf_token %}
+ <input class="submit-cm" type="submit" value="ثبت">
+</div>
+    </form>
+
+       <hr>
+
+
+
+ {% for comment in comments %}
+
+
+     <div class="all_cm" style="margin-top: 0.9rem;border-bottom:1px solid #0d6efd;">
+     <div class="comment-content column-flex-box">
+{##=====================================#}
+<div class="parent-comment row-flex-box comment-shape">
+    <div class="commnent-avatar column-flex-box">
+              <img class="avatar" src="{% static "postapp/img/default-avatar.jpg" %}">
+               <button class="comment-reply-link" onclick="myFunction({{ forloop.counter0 }})">پاسخ </button>
+           </div>
+     <div> <header class="row-flex-box"><span class="author">{{ comment.name }}</span><span>ساعت :{{ comment.created|date:'H:i' }}</span><span style="margin-right: 0.2rem;color: rgba(192,18,165,1)">{{ comment.get_jalali_created_date }}</span></header>
+     <div class="body"><p>  {{ comment.body }}</p></div>
+     </div>
+
+ </div>
+{#     #=====================================#}
+
+<form class="column-flex-box form_reply" method="POST" style="display: none;">
+    {% csrf_token %}
+{{ comment_form.body }}
+
+<div class="row-flex-box all-inp">
+     <div class="inp-cm column-flex-box">
+{{ comment_form.name }}
+         {{ comment_form.email }}
+
+</div>
+
+  <input type="hidden" name="reply_id" value="{{ comment.id }}">
+ <input class="submit-cm" type="submit" value="ثبت">
+</div>
+    </form>
+{#          #=====================================#}
+
+
+{% for reply in comment.replies.all %}
+    {% if reply.active %}
+
+
+           <div class="child-comment comment-shape row-flex-box">
+         <i class="fa-solid fa-reply"></i>
+           <div class="commnent-avatar column-flex-box">
+              <img class="avatar" src="{% static "postapp/img/default-avatar.jpg" %}">
+<button class="comment-reply-link" onclick="myFunction({{ forloop.parentloop.counter0 }})">پاسخ </button>
+
+           </div>
+
+
+     <div class="comment-info"> <header class="row-flex-box"><span class="author">{{ reply.name }}</span><span>ساعت :{{ reply.created|date:'H:i' }}</span><span style="margin-right: 0.2rem;color: rgba(192,18,165,1)">{{ reply.get_jalali_created_date }}</span></header>
+     <div class="body"><p> {{ reply.body }}</p></div>
+
+     </div>
+
+     </div>
+
+    {% endif %}
+    {% endfor %}
+{##=====================================#}
+
+
+
+      </div>
+      </div>
+
+
+   {% endfor %}
+
+
+
+<script type="text/javascript">
+function myFunction(forloop) {
+
+  var x = document.getElementsByClassName("column-flex-box form_reply")[forloop];
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

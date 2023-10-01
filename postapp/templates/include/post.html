@@ -1,0 +1,93 @@
+<article class="post">
+
+        <div class="row row-flex-box"><div class="title"><h2><a href="#">{{ post.title }}</a>
+        </h2><div class="category row-flex-box">
+            <a href="#">
+                 {% for category in post.category.all %}
+
+                     <a href="#"><span>{{ category.name }}&ensp;
+      {% if not forloop.last %}
+          |
+      {% endif %}</span>
+                 </a>
+                          {% endfor %}
+            </a></div></div>
+        <div class="post-detail row-flex-box">
+          <ul class="post_meta">
+            <li class="row-flex-box"><strong>نام :</strong><span>{{ post.name }} </span></li>
+           <li class="row-flex-box"><strong>ژانر :</strong><span>
+  {% for category in post.category.all %}
+             {{ category.name }}
+      {% if not forloop.last %}
+          |
+      {% endif %}
+
+ {% endfor %}</span></li>
+            <li class="row-flex-box"><strong>محصول :</strong><span>   {{ post.product }} </span></li>
+            <li class="row-flex-box"><strong>زبان فیلم  :</strong><span>   {{ post.language }} </span></li>
+            <li class="row-flex-box"><strong>سال ساخت :</strong><span>  {{ post.year }} </span></li>
+
+            <li class="row-flex-box"><strong>زمان :</strong><span> {{ post.time }} </span></li>
+            <li class="row-flex-box"><strong>کارگردان :</strong><span> {{ post.director}} </span></li>
+            <li class="row-flex-box"><strong>ستارگان :</strong><span> {{ post.actors }} </span></li>
+            <li class="row-flex-box"><strong> روزهای پخش :</strong><span> {% for day in post.day.all %}
+             {{ day.day }}
+      {% if not forloop.last %}
+          ,
+      {% endif %}
+
+ {% endfor %}</span></li>
+              <li class="row-flex-box"><strong>وضعیت  :</strong><span>  {{ post.state }} </span></li>
+            <li class="row-flex-box"><strong> تعداد قسمت ها :</strong><span>  {{ post.episode }} </span></li>
+          </ul>
+          <div class="post-img"><img src={{ post.img.url }} alt=""></div>
+        </div>
+{#        <div class="actors"><img src="https://b2kplus.xyz/wp-content/uploads/2022/02/a-business-proposal-2022-cast-768x253.jpg" alt=""></div>#}
+        <div class="story-box">
+          <p><strong>خلاصه داستان : </strong> {{ post.story }}</p>
+          </div>
+        <div class="link-download">
+          <h3>لینک های دانلود</h3>
+
+          <ul class="column-flex-box">
+               {% for link in links_movie %}
+
+            <li class="row-download row-flex-box"><strong>{{ link.name }}</strong><div class="row-flex-box">
+{% for download in link.frame.all %}
+                <a href="{{ download.url }}"><span>{{ download.frame }}</span></a>
+
+{% endfor %}
+
+            </div></li>
+
+{% endfor %}
+
+<hr>
+
+ {% for link in links_subtitle %}
+
+            <li class="row-download row-flex-box"><strong>{{ link.name }}</strong><div class="row-flex-box">
+{% for download in link.frame.all %}
+                <a href="{{ download.url }}"><span>{{ download.frame }}</span></a>
+
+{% endfor %}
+
+            </div></li>
+
+{% endfor %}
+
+
+
+          </ul>
+
+ </div>
+<hr>
+<div class="comment-field">
+{% include "include/comment.html" %}
+
+
+
+
+        </div>
+</div>
+      </article>

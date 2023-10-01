@@ -1,0 +1,32 @@
+
+
+      <article class="post">
+         <div class="row row-flex-box">
+             <div class="title">
+                 <h2><a href="#">{{ pin.title }}</a></h2>
+                 <div class="category row-flex-box">
+                     <a href="#"><span>{{ pin.title }}</span>
+                 </a>
+
+
+             </div></div>
+
+
+
+        <div class="post-detail row-flex-box">
+
+<div class="post-img"><img src={{ pin.img.url }} alt=""></div>
+        </div>
+        <div class="story-box" style="margin-top: 1rem;">
+          <p> {{ pin.story }}</p>
+          </div>
+        <div class="about-box">
+          <a href="{{ pin.get_absolute_url }}" type="button" class="post_download">
+            <i class="bi bi-cloud-arrow-down"></i> ادامه مطلب</a>
+        </div>
+           <footer class="footer-post"><div class="view-count"><span><i class="fa-solid fa-eye"></i>بازدید</span>&nbsp;<span>{{ pin.visited }}</span></div></footer>
+             </div>
+
+     </article>
+
+

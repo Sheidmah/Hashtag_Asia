@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+    {% block link %}
+    <script type="application/ld+json" class="yoast-schema-graph"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "postapp/css/reset.css" %}">
+    <link rel="stylesheet" href="{% static "postapp/css/all.css" %}">
+    <link rel="stylesheet" href="{% static "postapp/js/app.js" %}">
+    <link rel="stylesheet" href="{% static "postapp/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "postapp/style.css" %}">
+    <link rel="stylesheet" href="{% static "postapp/responsive.css" %}"/>
+    <link rel="stylesheet" href="{% static "postapp/css/iconmonstr-iconic-font.min.css" %}">
+    <script src="{% static "postapp/js/all.js" %}"></script>
+    <script src="{% static "postapp/js/app.js" %}"></script>
+    {% endblock %}
+
+    {% block title %}هشتگ آسیا - دانلود فیلم و سریال کره ای{% endblock %}
+{% block seriesshow %}
+    {% include "include/seriesshow.html"%}
+      {% endblock %}
+   {% block adv %}
+{% endblock %}
+  {% block posts %}
+ {% include "include/pin.html" %}
+
+        {% endblock %}
+
+
+
+
+
+{% block genre %}
+        {% include "include/genre.html" %}
+
+          {% endblock %}
+
+
+  {% block postpopular %}
+
+
+     {% include "include/popular.html" %}
+
+
+    {% endblock %}
+
+{% block box %}
+ <div class="series column-flex-box">
+        <a rel="nofollow" href="" class="instapage row-flex-box" target="_blank">
+          <div><span>درخواست فیلم وسریال</span> </div>
+          <div> <i class="fa-solid fa-video"></i></div>
+
+
+
+          </a>
+      </div>
+      <div class="socialmedia column-flex-box">
+        <a rel="nofollow" href="https://www.instagram.com/allofusaredead2022" class="instapage row-flex-box" target="_blank">
+          <div><span>ما را در اینستاگرام دنبال کنید</span> </div>
+          <div> <i class="fa-brands fa-instagram"></i></div>
+
+          </a>
+      </div>
+
+
+        {% endblock %}
+
+
+
+       {% block randommovie %}
+                 <section class="rndm-post"><header class="title row-flex-box"><h4>دانلود فیلم و سریال</h4></header>
+      <div class="rndm-post-tp row-flex-box">
+                {% include "include/randommovies.html" %}
+                  </div></section>
+    {% endblock %}
+
+
+
+
+
+
+
